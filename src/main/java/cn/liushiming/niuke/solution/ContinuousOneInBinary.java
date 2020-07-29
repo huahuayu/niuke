@@ -30,10 +30,11 @@ import java.util.Scanner;
 public class ContinuousOneInBinary {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int a = scanner.nextInt();
-        System.out.println(solution1(a));
-        System.out.println(solution2(a));
-        System.out.println(solution3(a));
+        while (scanner.hasNext()) {
+            int a = scanner.nextInt();
+            System.out.println(solution1(a));
+            //System.out.println(solution2(a));
+        }
     }
 
     private static int solution1(int a) {
@@ -41,6 +42,7 @@ public class ContinuousOneInBinary {
         int current = 0;
         while (a != 0) {
             if ((a & 1) > 0) {
+                System.out.println(a & 1);
                 current += 1;
                 if (current > max) {
                     max = current;
@@ -67,18 +69,6 @@ public class ContinuousOneInBinary {
                 current = 0;
             }
         }
-        return max;
-    }
-
-    private static int solution3(int a) {
-        String binaryString = Integer.toBinaryString(a);
-        String[] string = binaryString.split("0");
-
-        int max = 0;
-        for (String str : string) {
-            max = Math.max(max, str.length());
-        }
-
         return max;
     }
 }
